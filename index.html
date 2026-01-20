@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Una E-card especial con todo mi amor para ti 💜💛">
+    <title>Para Mi Amor - E-card Especial</title>
+    <meta property="og:title" content="Una sorpresa especial para ti 💖">
+    <meta property="og:description" content="Tienes un mensaje de amor esperándote...">
+    <meta property="og:image" content="https://emojicdn.elk.sh/💜💛">
+    <meta property="og:url" content="https://tunombre.github.io/ecard-para-mi-amor/">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <style>
+        /* RESET Y BASE */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        :root {
+            --morado: #9d4edd;
+            --amarillo: #ffd700;
+            --rosa: #ff6b8b;
+            --azul: #4cc9f0;
+            --fondo: #1a1a2e;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--fondo) 0%, #16213e 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+        
+        /* CONTENEDOR PRINCIPAL */
+        .ecard-wrapper {
+            width: 100%;
+            max-width: 400px;
+            height: 85vh;
+            max-height: 700px;
+            position: relative;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 
+                0 25px 50px rgba(0,0,0,0.5),
+                0 0 0 1px rgba(255,255,255,0.1);
+            animation: containerGlow 4s infinite alternate;
+        }
+        
+        @keyframes containerGlow {
+            0% { box-shadow: 0 25px 50px rgba(157, 78, 221, 0.3); }
+            100% { box-shadow: 0 25px 50px rgba(255, 215, 0, 0.3); }
+        }
+        
+        /* ESCENAS */
+        .scene {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+        
+        .scene.active {
+            display: flex;
+            opacity: 1;
+            animation: sceneEnter 1s ease;
+        }
+        
+        @keyframes sceneEnter {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* ESCENA 1: CORAZONES */
+        .scene-1 {
+            background: linear-gradient(135deg, #3a0ca3 0%, #7209b7 100%);
+        }
+        
+        .hearts-container {
+            position: relative;
+            width: 250px;
+            height: 250px;
+            margin-bottom: 40px;
+        }
+        
+        .heart-morado {
+            position: absolute;
+            font-size: 120px;
+            color: var(--morado);
+            filter: 
+                drop-shadow(0 0 20px var(--morado))
+                drop-shadow(0 0 40px rgba(157, 78, 221, 0.5));
+            animation: 
+                heartBeatMorado 2s ease-in-out infinite,
+                floatMorado 6s ease-in-out infinite;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .heart-amarillo {
+            position: absolute;
+            font-size: 100px;
+            color: var(--amarillo);
+            filter: 
+                drop-shadow(0 0 15px var(--amarillo))
+                drop-shadow(0 0 30px rgba(255, 215, 0, 0.5));
+            animation: 
+                heartBeatAmarillo 2s ease-in-out infinite 0.5s,
+                floatAmarillo 6s ease-in-out infinite 0.3s;
+            left: 60%;
+            top: 40%;
+        }
+        
+        @keyframes heartBeatMorado {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.1); }
+        }
+        
+        @keyframes heartBeatAmarillo {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+        
+        @keyframes floatMorado {
+            0%, 100% { transform: translate(-50%, -50%) rotate(-5deg); }
+            50% { transform: translate(-50%, -60%) rotate(5deg); }
+        }
+        
+        @keyframes floatAmarillo {
+            0%, 100% { transform: rotate(5deg); }
+            50% { transform: translateY(-10px) rotate(-5deg); }
+        }
+        
+        .title-text {
+            color: white;
+            font-size: 28px;
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            animation: textGlow 3s infinite alternate;
+        }
+        
+        @keyframes textGlow {
+            0% { text-shadow: 0 0 10px var(--morado); }
+            100% { text-shadow: 0 0 10px var(--amarillo); }
+        }
+        
+        /* ESCENA 2: HARRY POTTER Y SNOOPY */
+        .scene-2 {
+            background: linear-gradient(135deg, #0a2342 0%, #2a4d69 100%);
+        }
+        
+        .hobbies-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin: 30px 0;
+        }
+        
+        .hobby-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .hobby-icon {
+            font-size: 70px;
+            animation: bounceSoft 2s infinite;
+        }
+        
+        .hp-icon { animation-delay: 0s; }
+        .snoopy-icon { animation-delay: 0.3s; }
+        
+        @keyframes bounceSoft {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .hobby-text {
+            color: white;
+            background: rgba(255,255,255,0.1);
+            padding: 15px 20px;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(5px);
+            max-width: 300px;
+            line-height: 1.5;
+        }
+        
+        /* ESCENA 3: STAR WARS */
+        .scene-3 {
+            background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
+            justify-content: flex-start;
+            padding-top: 100px;
+        }
+        
+        .star-wars-scroll {
+            color: #ffe81f;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            text-align: center;
+            font-size: 18px;
+            line-height: 1.6;
+            transform: perspective(300px) rotateX(25deg);
+            animation: starScroll 20s linear infinite;
+        }
+        
+        @keyframes starScroll {
+            0% { transform: perspective(300px) rotateX(25deg) translateY(100%); }
+            100% { transform: perspective(300px) rotateX(25deg) translateY(-200%); }
+        }
+        
+        /* ESCENA 4: LLAVES */
+        .scene-4 {
+            background: linear-gradient(135deg, #240046 0%, #5a189a 100%);
+        }
+        
+        .key-animation {
+            font-size: 100px;
+            margin: 30px 0;
+            animation: 
+                keyFloat 4s ease-in-out infinite,
+                keySparkle 2s infinite;
+        }
+        
+        @keyframes keyFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+        
+        @keyframes keySparkle {
+            0%, 100% { filter: drop-shadow(0 0 5px #d4af37); }
+            50% { filter: drop-shadow(0 0 20px #ffd700); }
+        }
+        
+        /* ESCENA 5: MENSAJE FINAL */
+        .scene-5 {
+            background: linear-gradient(135deg, #ff006e 0%, #fb5607 100%);
+        }
+        
+        .final-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 20px;
+            max-width: 350px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            animation: cardPulse 3s infinite;
+        }
+        
+        @keyframes cardPulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 15px 35px rgba(0,0,0,0.2); }
+            50% { transform: scale(1.02); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+        }
+        
+        .love-message {
+            color: #333;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .highlight {
+            color: #ff006e;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        
+        /* CONTROLES */
+        .scene-controls {
+            position: absolute;
+            bottom: 25px;
+            display: flex;
+            gap: 12px;
+            z-index: 100;
+        }
+        
+        .scene-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            border: 2px solid rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .scene-dot.active {
+            background: white;
+            transform: scale(1.3);
+            box-shadow: 0 0 10px white;
+        }
+        
+        /* BOTONES DE ACCIÓN */
+        .action-buttons {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 100;
+        }
+        
+        .action-btn {
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.3);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s;
+            font-size: 18px;
+        }
+        
+        .action-btn:hover {
+            background: rgba(255,255,255,0.25);
+            transform: scale(1.1);
+        }
+        
+        /* INSTRUCCIONES */
+        .instructions {
+            position: absolute;
+            bottom: 60px;
+            color: rgba(255,255,255,0.7);
+            font-size: 12px;
+            text-align: center;
+            width: 100%;
+            padding: 0 20px;
+        }
+        
+        /* LOADING */
+        .loading-screen {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: var(--fondo);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        
+        .loading-hearts {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .loading-hearts span {
+            font-size: 40px;
+            animation: loadingHeart 1.5s infinite;
+        }
+        
+        .loading-hearts span:nth-child(1) { animation-delay: 0s; color: var(--morado); }
+        .loading-hearts span:nth-child(2) { animation-delay: 0.3s; color: var(--amarillo); }
+        .loading-hearts span:nth-child(3) { animation-delay: 0.6s; color: var(--rosa); }
+        
+        @keyframes loadingHeart {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 1; }
+        }
+        
+        /* RESPONSIVE */
+        @media (max-width: 480px) {
+            .ecard-wrapper {
+                height: 90vh;
+                border-radius: 20px;
+            }
+            
+            .title-text {
+                font-size: 24px;
+            }
+            
+            .hearts-container {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .heart-morado { font-size: 100px; }
+            .heart-amarillo { font-size: 80px; }
+            
+            .final-card {
+                padding: 20px;
+                margin: 0 15px;
+            }
+        }
+        
+        @media (max-height: 700px) {
+            .scene { padding: 20px; }
+            .hearts-container { margin-bottom: 20px; }
+            .hobbies-container { margin: 15px 0; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Pantalla de carga -->
+    <div class="loading-screen" id="loading">
+        <div class="loading-hearts">
+            <span>💜</span>
+            <span>💛</span>
+            <span>❤️</span>
+        </div>
+        <p style="color: white;">Cargando nuestro amor...</p>
+    </div>
+    
+    <!-- E-card principal -->
+    <div class="ecard-wrapper">
+        <!-- Botones de acción -->
+        <div class="action-buttons">
+            <button class="action-btn" onclick="shareEcard()" title="Compartir">📤</button>
+            <button class="action-btn" onclick="toggleMusic()" title="Música">🎵</button>
+            <button class="action-btn" onclick="toggleAutoPlay()" title="Autoplay">⏸️</button>
+        </div>
+        
+        <!-- Escena 1: Corazones -->
+        <div class="scene scene-1 active">
+            <div class="hearts-container">
+                <div class="heart-morado">💜</div>
+                <div class="heart-amarillo">💛</div>
+            </div>
+            
+            <h1 class="title-text">Tú + Yo = 💖</h1>
+            
+            <div class="hobby-text">
+                <p>Mi corazón es morado como mi amor por ti</p>
+                <p>Tu corazón es amarillo como tu luz que me guía</p>
+            </div>
+        </div>
+        
+        <!-- Escena 2: HP y Snoopy -->
+        <div class="scene scene-2">
+            <h2 class="title-text">Tus Pasiones</h2>
+            
+            <div class="hobbies-container">
+                <div class="hobby-item">
+                    <div class="hobby-icon hp-icon">⚡</div>
+                    <p style="color: white;">Harry Potter</p>
+                </div>
+                <div class="hobby-item">
+                    <div class="hobby-icon snoopy-icon">🐶</div>
+                    <p style="color: white;">Snoopy</p>
+                </div>
+            </div>
+            
+            <div class="hobby-text">
+                Amo cómo te apasionan las cosas que te gustan<br>
+                Y cómo compartes esa felicidad conmigo
+            </div>
+        </div>
+        
+        <!-- Escena 3: Star Wars -->
+        <div class="scene scene-3">
+            <div class="star-wars-scroll">
+                <h3 style="margin-bottom: 30px;">NUESTRA ALIANZA</h3>
+                
+                <p>En una galaxia de amor...</p>
+                <p>Tú con tu varita mágica ⚡</p>
+                <p>Yo con mi sable de luz ✨</p>
+                <p>Diferentes fuerzas unidas</p>
+                <p>Para proteger nuestro corazón</p>
+                
+                <p style="margin-top: 50px;">
+                    "Que el amor nos acompañe<br>
+                    Siempre, en cada momento<br>
+                    En cada decisión<br>
+                    En cada latido"
+                </p>
+            </div>
+        </div>
+        
+        <!-- Escena 4: Llaves -->
+        <div class="scene scene-4">
+            <h2 class="title-text">Tus Tesoros</h2>
+            
+            <div class="key-animation">🗝️</div>
+            
+            <div class="hobby-text">
+                <p>Como esas llaves antiguas que coleccionas,</p>
+                <p style="color: #d4af37; font-weight: bold; margin: 10px 0;">
+                    tú tienes la llave que abre mi corazón
+                </p>
+                <p>Cada recuerdo nuestro es un tesoro que guardo</p>
+            </div>
+        </div>
+        
+        <!-- Escena 5: Mensaje Final -->
+        <div class="scene scene-5">
+            <div class="final-card">
+                <h2 style="color: #ff006e; margin-bottom: 20px; text-align: center;">
+                    Mi Promesa Eterna
+                </h2>
+                
+                <p class="love-message">
+                    Mi amor, aunque no siempre estemos de acuerdo en todo,
+                    <span class="highlight">
+                        solo quiero que siempre estemos de acuerdo en amarnos.
+                    </span>
+                </p>
+                
+                <p class="love-message">
+                    En respetar nuestras diferencias,<br>
+                    en celebrar nuestras similitudes,<br>
+                    y en elegirnos cada día de nuevo.
+                </p>
+                
+                <p class="love-message">
+                    Porque contigo, hasta los desacuerdos<br>
+                    son oportunidades para crecer juntos.
+                </p>
+                
+                <div style="display: flex; justify-content: center; gap: 20px; margin: 25px 0;">
+                    <div style="font-size: 40px; animation: pulse 2s infinite;">💜</div>
+                    <div style="font-size: 40px; animation: pulse 2s infinite 0.5s;">💛</div>
+                </div>
+                
+                <p style="text-align: center; color: #666; font-style: italic; margin-top: 15px;">
+                    Para siempre y más allá...<br>
+                    Con todo mi amor
+                </p>
+            </div>
+        </div>
+        
+        <!-- Controles de escenas -->
+        <div class="scene-controls">
+            <div class="scene-dot active" onclick="changeScene(0)"></div>
+            <div class="scene-dot" onclick="changeScene(1)"></div>
+            <div class="scene-dot" onclick="changeScene(2)"></div>
+            <div class="scene-dot" onclick="changeScene(3)"></div>
+            <div class="scene-dot" onclick="changeScene(4)"></div>
+        </div>
+        
+        <div class="instructions">
+            Toca los puntos para cambiar escena • Se cambia automáticamente cada 8s
+        </div>
+    </div>
+    
+    <!-- Audio para música (opcional) -->
+    <audio id="bg-music" loop>
+        <source src="https://assets.mixkit.co/music/preview/mixkit-romantic-sunset-687.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // Variables globales
+        let currentScene = 0;
+        let autoPlay = true;
+        let autoPlayInterval;
+        const scenes = document.querySelectorAll('.scene');
+        const dots = document.querySelectorAll('.scene-dot');
+        const totalScenes = scenes.length;
+        
+        // Inicializar
+        window.addEventListener('load', () => {
+            // Ocultar loading después de 1.5s
+            setTimeout(() => {
+                document.getElementById('loading').style.display = 'none';
+                startAutoPlay();
+            }, 1500);
+            
+            // Iniciar con escena 0
+            changeScene(0);
+        });
+        
+        // Cambiar escena
+        function changeScene(index) {
+            // Validar índice
+            if (index < 0) index = totalScenes - 1;
+            if (index >= totalScenes) index = 0;
+            
+            // Ocultar todas las escenas
+            scenes.forEach(scene => {
+                scene.classList.remove('active');
+            });
+            
+            // Mostrar escena actual
+            scenes[index].classList.add('active');
+            
+            // Actualizar puntos de control
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+            
+            currentScene = index;
+            
+            // Reiniciar autoplay si está activo
+            if (autoPlay) {
+                clearInterval(autoPlayInterval);
+                startAutoPlay();
+            }
+        }
+        
+        // Autoplay
+        function startAutoPlay() {
+            if (autoPlay) {
+                autoPlayInterval = setInterval(() => {
+                    changeScene((currentScene + 1) % totalScenes);
+                }, 8000); // 8 segundos por escena
+            }
+        }
+        
+        // Alternar autoplay
+        function toggleAutoPlay() {
+            autoPlay = !autoPlay;
+            const btn = document.querySelector('[onclick="toggleAutoPlay()"]');
+            btn.textContent = autoPlay ? '⏸️' : '▶️';
+            btn.title = autoPlay ? 'Pausar autoplay' : 'Activar autoplay';
+            
+            if (autoPlay) {
+                startAutoPlay();
+            } else {
+                clearInterval(autoPlayInterval);
+            }
+        }
+        
+        // Música de fondo
+        function toggleMusic() {
+            const music = document.getElementById('bg-music');
+            const btn = document.querySelector('[onclick="toggleMusic()"]');
+            
+            if (music.paused) {
+                music.play().catch(e => {
+                    console.log("Autoplay bloqueado, necesita interacción del usuario");
+                    btn.textContent = '🔇';
+                });
+                btn.textContent = '🎵';
+                btn.title = 'Silenciar música';
+            } else {
+                music.pause();
+                btn.textContent = '🔇';
+                btn.title = 'Activar música';
+            }
+        }
+        
+        // Compartir E-card
+        async function shareEcard() {
+            const shareData = {
+                title: '💜💛 Una E-card especial para ti',
+                text: 'Te he creado una tarjeta digital con todo mi amor. ¡Ábrela!',
+                url: window.location.href
+            };
+            
+            try {
+                if (navigator.share) {
+                    await navigator.share(shareData);
+                } else {
+                    // Copiar enlace al portapapeles
+                    await navigator.clipboard.writeText(window.location.href);
+                    alert('✅ Enlace copiado al portapapeles\n\nPega el enlace en WhatsApp para compartirlo');
+                }
+            } catch (err) {
+                // Fallback: Mostrar enlace
+                alert(`📱 Comparte este enlace por WhatsApp:\n\n${window.location.href}`);
+            }
+        }
+        
+        // Navegación con teclado
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') changeScene(currentScene - 1);
+            if (e.key === 'ArrowRight') changeScene(currentScene + 1);
+            if (e.key === ' ') toggleAutoPlay();
+        });
+        
+        // Efectos de toque
+        document.addEventListener('click', (e) => {
+            if (!e.target.classList.contains('scene-dot') && 
+                !e.target.classList.contains('action-btn')) {
+                createHeartParticles(e.clientX, e.clientY);
+            }
+        });
+        
+        function createHeartParticles(x, y) {
+            const colors = ['💜', '💛', '❤️', '✨'];
+            for (let i = 0; i < 3; i++) {
+                const particle = document.createElement('div');
+                particle.innerHTML = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.position = 'fixed';
+                particle.style.left = x + 'px';
+                particle.style.top = y + 'px';
+                particle.style.fontSize = '20px';
+                particle.style.pointerEvents = 'none';
+                particle.style.zIndex = '1000';
+                particle.style.animation = `particleFloat 1.5s ease-out forwards`;
+                
+                document.body.appendChild(particle);
+                
+                // Crear keyframes dinámicamente
+                const style = document.createElement('style');
+                style.textContent = `
+                    @keyframes particleFloat {
+                        0% { 
+                            opacity: 1; 
+                            transform: translate(0, 0) rotate(0deg); 
+                        }
+                        100% { 
+                            opacity: 0; 
+                            transform: translate(${Math.random() * 100 - 50}px, -100px) rotate(180deg); 
+                        }
+                    }
+                `;
+                document.head.appendChild(style);
+                
+                setTimeout(() => {
+                    document.body.removeChild(particle);
+                    document.head.removeChild(style);
+                }, 1500);
+            }
+        }
+        
+        // Detectar si está en WhatsApp
+        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        const isWhatsApp = /WhatsApp/i.test(navigator.userAgent);
+        
+        if (isMobile) {
+            console.log('📱 Dispositivo móvil detectado');
+            if (isWhatsApp) {
+                console.log('✅ Abriendo en WhatsApp - Optimizado');
+            }
+        }
+    </script>
+</body>
+</html>
